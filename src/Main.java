@@ -1,11 +1,13 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Trie trie = new Trie();
+        leerTxt(trie);
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("--Menu de opciones--");
@@ -48,6 +50,11 @@ public class Main {
                     System.out.println(e.getMessage());
                 }
             }
+        }catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
