@@ -8,7 +8,6 @@ public class Trie {
     public void insertar(String w){
         if (root==null || w ==null || w.length()==0) return;
         insert(root,w, 0);
-
     }
 
     private void insert(Nodo n, String w, int i){

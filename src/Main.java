@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,6 +16,7 @@ public class Main {
             System.out.println("5. Seleccionar una de las sugerencias para completar la palabra ingresada");
             System.out.println("6. Salir de la aplicacion");
             int opcion = sc.nextInt();
+            sc.nextLine();
             switch (opcion) {
                 case 2: ingresarPalabra(sc, trie);
             }
@@ -29,5 +33,21 @@ public class Main {
 
 
 
-
+    private static void leerTxt(Trie trie) throws IOException {
+        String nombreArchivo = "diccionario.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                linea = linea.trim();
+                if (linea.isEmpty()) {
+                    continue;
+                }
+                try {
+                    trie.insertar(linea.toUpperCase());
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+    }
 }
