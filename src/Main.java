@@ -54,7 +54,6 @@ public class Main {
                     String[] listPrefCompletar = trie.autocompletar(prefCompletar).toArray(new String[0]);
                     if (listPrefCompletar.length != 0) {
                         for (int i = 0; i < listPrefCompletar.length; i++) {
-                            System.out.println(i);
                             System.out.println((i + 1) + ". " + listPrefCompletar[i]);
                         }
                         System.out.println("Seleccione un numero");
