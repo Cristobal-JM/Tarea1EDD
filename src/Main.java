@@ -25,14 +25,26 @@ public class Main {
                     String wIngresar = sc.nextLine();
                     trie.insertar(wIngresar.toUpperCase());
                     break;
+
+                case 3:
+                    System.out.println("Ingrese la palabra a eliminar:");
+                    String wEliminar = sc.nextLine().toUpperCase();
+                    trie.eliminar(wEliminar);
+                    System.out.println("Palabra eliminada.");
+                    break;
+
+                case 4:
+                    System.out.println("Ingrese el prefijo:");
+                    String pref = sc.nextLine().toUpperCase();
+                    trie.autocompletar(pref);
+                    break;
+
+                case 6:
+                    System.out.println("Saliendo...");
+                    return;
             }
-
-
         }
-
     }
-
-
 
     private static void leerTxt(Trie trie) throws IOException {
         String nombreArchivo = "diccionario.txt";

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Trie {
     private Nodo root = new Nodo();
 
@@ -55,4 +58,48 @@ public class Trie {
             delete(n.getPuntero(idx), w, i + 1);
         }
     }
+
+    public void autocompletar(String prefijo) {
+        if (root == null || prefijo == null || prefijo.length() == 0) {
+            System.out.println("Prefijo vacio o invalido.");
+            return;
+        }
+        buscarPrefijo(root, prefijo, 0);
+    }
+
+    private void buscarPrefijo(Nodo n, String prefijo, int i) {
+        int idx = indice(prefijo.charAt(i));
+
+        if (n.getPuntero(idx) == null) {
+            System.out.println("No existen palabras con el prefijo ingresado.");
+            return;
+        }
+
+        if (i == prefijo.length() - 1) {
+            if (n.palabraCompleta(idx)) {
+                System.out.println(prefijo);
+            }
+            recolectar(n.getPuntero(idx), prefijo);
+        } else {
+            buscarPrefijo(n.getPuntero(idx), prefijo, i + 1);
+        }
+    }
+
+    private void recolectar(Nodo n, String palabraActual) {
+        if (n == null) return;
+
+        for (int i = 0; i < 26; i++) {
+            char letra = (char) ('A' + i);
+
+            if (n.palabraCompleta(i)) {
+                System.out.println(palabraActual + letra);
+            }
+
+            if (n.getPuntero(i) != null) {
+                recolectar(n.getPuntero(i), palabraActual + letra);
+            }
+        }
+    }
+
+
 }
