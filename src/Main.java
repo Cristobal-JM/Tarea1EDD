@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -20,10 +21,21 @@ public class Main {
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
+                case 1:
+                    System.out.println("Ingrese la palabra a buscar");
+                    String wBuscar = sc.nextLine();
+                    System.out.println("La palabra " + wBuscar + " esta almacenada: "
+                            + trie.buscar(wBuscar.toUpperCase()));
+                    break;
                 case 2:
                     System.out.println("Ingrese la palabra a insertar");
                     String wIngresar = sc.nextLine();
                     trie.insertar(wIngresar.toUpperCase());
+                    break;
+                case 3:
+                    System.out.println("Ingresar la palabra a borrar");
+                    String wBorrar = sc.nextLine();
+                    System.out.println("Se ha podido borrar la palabra  " +  wBorrar + "? " + trie.eliminar(wBorrar.toUpperCase()));
                     break;
             }
 
