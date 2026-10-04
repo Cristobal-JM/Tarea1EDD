@@ -41,18 +41,18 @@ public class Trie {
         return search(n.getPuntero(idx), w, i + 1);
     }
 
-    public void eliminar(String w) {
-        if (root == null || w == null || w.length() == 0) return;
-        if (!buscar(w)) return;
-        delete(root, w, 0);
+    public boolean eliminar(String w) {
+        if (root == null || w == null || w.length() == 0) return false;
+        if (!buscar(w)) return false;
+        return delete(root, w, 0);
     }
 
-    private void delete(Nodo n, String w, int i) {
+    private boolean delete(Nodo n, String w, int i) {
         int idx = indice(w.charAt(i));
         if (i == w.length() - 1) {
             n.desmarcarFinPalabra(idx);
-        } else {
-            delete(n.getPuntero(idx), w, i + 1);
+            return true;
         }
+        return delete(n.getPuntero(idx), w, i + 1);
     }
 }
