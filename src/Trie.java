@@ -92,7 +92,7 @@ public class Trie {
             char letra = (char) ('A' + i);
 
             if (n.palabraCompleta(i)) {
-                System.out.println(palabraActual + letra);
+                resultados.add(palabraActual + letra);
             }
 
             if (n.getPuntero(i) != null) {
