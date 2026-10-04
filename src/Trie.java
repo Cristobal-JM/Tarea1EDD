@@ -81,7 +81,7 @@ public class Trie {
             if (n.palabraCompleta(idx)) {
                 System.out.println(prefijo);
             }
-            recolectar(n.getPuntero(idx), prefijo);
+            recolectar(n.getPuntero(idx), prefijo, resultados);
         } else {
             buscarPrefijo(n.getPuntero(idx), prefijo, i + 1, resultados);
         }
