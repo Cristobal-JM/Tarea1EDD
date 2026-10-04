@@ -87,7 +87,7 @@ public class Trie {
         }
     }
 
-    private void recolectar(Nodo n, String palabraActual) {
+    private void recolectar(Nodo n, String palabraActual, ArrayList<String> resultados) {
         if (n == null) return;
 
         for (int i = 0; i < 26; i++) {
@@ -98,7 +98,7 @@ public class Trie {
             }
 
             if (n.getPuntero(i) != null) {
-                recolectar(n.getPuntero(i), palabraActual + letra);
+                recolectar(n.getPuntero(i), palabraActual + letra, resultados);
             }
         }
     }
