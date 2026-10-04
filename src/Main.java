@@ -26,6 +26,7 @@ public class Main {
                     String palabra = sc.nextLine();
                     System.out.println("Esta la palabra "
                             + palabra.toUpperCase() + " en la lista?: " + trie.buscar(palabra));
+                    break;
                 case 2:
                     System.out.println("Ingrese la palabra a insertar");
                     String wIngresar = sc.nextLine();
