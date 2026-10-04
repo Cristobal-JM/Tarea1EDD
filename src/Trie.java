@@ -26,10 +26,8 @@ public class Trie {
         }
     }
 
-    //no se que falta aca
-
     public boolean buscar(String w) {
-        if (root == null || w == null || w.isEmpty()) return false;
+        if (root == null || w == null || w.length() == 0) return false;
         return search(root, w, 0);
     }
 
