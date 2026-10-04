@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -20,6 +21,11 @@ public class Main {
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
+                case 1:
+                    System.out.println("Ingrese la palabra a buscar");
+                    String palabra = sc.nextLine();
+                    System.out.println("Esta la palabra "
+                            + palabra.toUpperCase() + " en la lista?: " + trie.buscar(palabra));
                 case 2:
                     System.out.println("Ingrese la palabra a insertar");
                     String wIngresar = sc.nextLine();
@@ -36,9 +42,25 @@ public class Main {
                 case 4:
                     System.out.println("Ingrese el prefijo:");
                     String pref = sc.nextLine().toUpperCase();
-                    trie.autocompletar(pref);
+                    ArrayList<String> listPrefijos = trie.autocompletar(pref);
+                    for (String p : listPrefijos) {
+                        System.out.println(p);
+                    }
                     break;
-
+                case 5:
+                    System.out.println("Ingrese el prefijo:");
+                    String prefCompletar = sc.nextLine().toUpperCase();
+                    String[] listPrefCompletar = trie.autocompletar(prefCompletar).toArray(new String[0]);
+                    if (listPrefCompletar.length != 0) {
+                        for (int i = 0; i < listPrefCompletar.length; i++) {
+                            System.out.println(i);
+                            System.out.println((i + 1) + ". " + listPrefCompletar[i]);
+                        }
+                        System.out.println("Seleccione un numero");
+                        int prefijoSeleccionado = sc.nextInt();
+                        System.out.println("Palabra seleccionada: " + listPrefCompletar[prefijoSeleccionado-1]);
+                    }
+                    break;
                 case 6:
                     System.out.println("Saliendo...");
                     return;
