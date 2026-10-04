@@ -20,17 +20,16 @@ public class Main {
             int opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
-                case 2: ingresarPalabra(sc, trie);
+                case 2:
+                    System.out.println("Ingrese la palabra a insertar");
+                    String wIngresar = sc.nextLine();
+                    trie.insertar(wIngresar.toUpperCase());
+                    break;
             }
 
 
         }
 
-    }
-    private static void ingresarPalabra(Scanner sc, Trie trie) {
-        System.out.println("Ingresar una palabra");
-        String palabra = sc.nextLine();
-        trie.insertar(palabra.toUpperCase());
     }
 
 
