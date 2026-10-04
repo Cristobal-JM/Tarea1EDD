@@ -59,15 +59,17 @@ public class Trie {
         return delete(n.getPuntero(idx), w, i + 1);
     }
 
-    public void autocompletar(String prefijo) {
+    public ArrayList<String> autocompletar(String prefijo) {
+        ArrayList<String> resultados = new ArrayList<>();
         if (root == null || prefijo == null || prefijo.length() == 0) {
-            System.out.println("Prefijo vacio o invalido.");
-            return;
+            return resultados;
         }
-        buscarPrefijo(root, prefijo, 0);
+        buscarPrefijo(root, prefijo, 0, resultados);
+        return resultados;
     }
 
-    private void buscarPrefijo(Nodo n, String prefijo, int i) {
+
+    private void buscarPrefijo(Nodo n, String prefijo, int i, ArrayList<String> resultados) {
         int idx = indice(prefijo.charAt(i));
 
         if (n.getPuntero(idx) == null) {
@@ -81,7 +83,7 @@ public class Trie {
             }
             recolectar(n.getPuntero(idx), prefijo);
         } else {
-            buscarPrefijo(n.getPuntero(idx), prefijo, i + 1);
+            buscarPrefijo(n.getPuntero(idx), prefijo, i + 1, resultados);
         }
     }
 
@@ -100,6 +102,4 @@ public class Trie {
             }
         }
     }
-
-
 }
